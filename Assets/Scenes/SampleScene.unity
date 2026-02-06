@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 196539676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.48, y: 7.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -173,6 +173,10 @@ MonoBehaviour:
   - {fileID: 1851702100}
   - {fileID: 2097549252}
   - {fileID: 1791772247}
+  pickedColor: 0
+  currentMarker: 0
+  bookPrefab: {fileID: 1150151670483246937, guid: e0319fa31cce42e42805a6a0834d07d6, type: 3}
+  emptySpacePrefab: {fileID: 1150151670483246937, guid: 1053eb03e7f5519428404e80373c3ecc, type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +612,7 @@ Transform:
   m_GameObject: {fileID: 595432784}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: 4, y: 3, z: -0.62}
+  m_LocalPosition: {x: 4, y: 3, z: -0.41999996}
   m_LocalScale: {x: 0.42724, y: 0.42724, z: 0.42724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -636,7 +640,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 3.5, y: 0, z: 0}
 --- !u!23 &595432787
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -832,7 +836,7 @@ Transform:
   m_GameObject: {fileID: 730562966}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: 0, y: 3, z: -0.62}
+  m_LocalPosition: {x: 0, y: 3, z: -0.41999996}
   m_LocalScale: {x: 0.42724, y: 0.42724, z: 0.42724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -860,7 +864,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 3.5, y: 0, z: 0}
 --- !u!23 &730562969
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1027,7 +1031,7 @@ Transform:
   m_GameObject: {fileID: 842632549}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: 0, y: 6, z: -0.62}
+  m_LocalPosition: {x: 0, y: 6, z: -0.41999996}
   m_LocalScale: {x: 0.42724, y: 0.42724, z: 0.42724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1055,7 +1059,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 3.5, y: 0, z: 0}
 --- !u!23 &842632552
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1140,7 +1144,7 @@ Transform:
   m_GameObject: {fileID: 1162427781}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: -4, y: 6, z: -0.62}
+  m_LocalPosition: {x: -4, y: 6, z: -0.42}
   m_LocalScale: {x: 0.42724, y: 0.42724, z: 0.42724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1168,7 +1172,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 3.5, y: 0, z: 0}
 --- !u!23 &1162427784
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1516,7 +1520,7 @@ Transform:
   m_GameObject: {fileID: 1723777804}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: -4, y: 3, z: -0.62}
+  m_LocalPosition: {x: -4, y: 3, z: -0.41999996}
   m_LocalScale: {x: 0.42724, y: 0.42724, z: 0.42724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1544,7 +1548,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 3.5, y: 0, z: 0}
 --- !u!23 &1723777807
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1629,7 +1633,7 @@ Transform:
   m_GameObject: {fileID: 1791772247}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: 4, y: 0, z: -0.62}
+  m_LocalPosition: {x: 4, y: 0, z: -0.41999996}
   m_LocalScale: {x: 0.42724, y: 0.42724, z: 0.42724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1657,7 +1661,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 3.5, y: 0, z: 0}
 --- !u!23 &1791772250
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1742,7 +1746,7 @@ Transform:
   m_GameObject: {fileID: 1851702100}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: -4, y: 0, z: -0.62}
+  m_LocalPosition: {x: -4, y: 0, z: -0.41999996}
   m_LocalScale: {x: 0.42724, y: 0.42724, z: 0.42724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1770,7 +1774,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 3.5, y: 0, z: 0}
 --- !u!23 &1851702103
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2145,7 +2149,7 @@ Transform:
   m_GameObject: {fileID: 2097549252}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: 0, y: 0, z: -0.62}
+  m_LocalPosition: {x: 0, y: 0, z: -0.41999996}
   m_LocalScale: {x: 0.42724, y: 0.42724, z: 0.42724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2173,7 +2177,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 3.5, y: 0, z: 0}
 --- !u!23 &2097549255
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2258,7 +2262,7 @@ Transform:
   m_GameObject: {fileID: 2107719828}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: 4, y: 6, z: -0.62}
+  m_LocalPosition: {x: 4, y: 6, z: -0.41999996}
   m_LocalScale: {x: 0.42724, y: 0.42724, z: 0.42724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2286,7 +2290,7 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 3.5, y: 0, z: 0}
 --- !u!23 &2107719831
 MeshRenderer:
   m_ObjectHideFlags: 0

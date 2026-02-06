@@ -1,10 +1,11 @@
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class BookGen : MonoBehaviour
 {
-    private Color[] colors = new Color[]
+    public Color[] colors = new Color[]
     {
         Color.aquamarine,
         Color.cornflowerBlue,
@@ -17,47 +18,72 @@ public class BookGen : MonoBehaviour
         Color.yellowNice
     };
     public GameObject[] markers;
-    private int[] colorChecker = new int[9] { 9,9,9,9,9,9,9,9,9 };
+    public int[] colorChecker = new int[9] { 9, 9, 9, 9, 9, 9, 9, 9, 9 };
     public int pickedColor;
     public int currentMarker = 0;
+    public GameObject bookPrefab;
+    public GameObject emptySpacePrefab;
+    private Collider markerCollider;
+    private bool allMarkersColored = false;
+
 
     void Start()
     {
         MarkerColorPick();
+        BookSpawner();
+
     }
 
-    void MarkerColorPick()
+    public void MarkerColorPick()
     {
+        pickedColor = Random.Range(0, colors.Length);
 
-        int pickedColor = Random.Range(0, colors.Length);
-        MarkerColorCheck();
-
-        void MarkerColorCheck()
+        if (currentMarker <= markers.Length && !colorChecker.Contains(pickedColor))
         {
-            if (!colorChecker.Contains(pickedColor))
-            {
-                //Debug.Log("!!!CHECKER pickedColor: " + pickedColor + " | colorChecker: " + colorChecker.ToCommaSeparatedString() + " | currentMarker: " + currentMarker);
-                MarkerColorSet();
-            }
-            if (colorChecker.Contains(pickedColor) && currentMarker < markers.Length)
-            {
-                //Debug.Log("_CHECKER pickedColor: " + pickedColor + " | colorChecker: " + colorChecker.ToCommaSeparatedString() + " | currentMarker: " + currentMarker);
-                MarkerColorPick();
-            }
-
+            MarkerColorSet();
         }
-        void MarkerColorSet()
+        if (currentMarker <= markers.Length && colorChecker.Contains(pickedColor) && !allMarkersColored)
         {
-            if (currentMarker <= markers.Length)
-            {
-                markers[currentMarker].GetComponent<Renderer>().material.color = colors[pickedColor];
-                colorChecker[currentMarker] = pickedColor;
-                ++currentMarker;
-                //Debug.Log("SET pickedColor: " + pickedColor + " | colorChecker: " + colorChecker.ToCommaSeparatedString() + " | currentMarker: " + currentMarker + " | colorChecker.Contains(pickedColor): " + colorChecker.Contains(pickedColor) + " | currentMarker < markers.Length: " + (currentMarker < markers.Length));
-                MarkerColorPick();
-            }
+            MarkerColorPick();
+        }
+
+
+
+    }
+
+    public void MarkerColorSet()
+    {
+        if (currentMarker <= markers.Length)
+        {
+            markers[currentMarker].GetComponent<Renderer>().material.color = colors[pickedColor];
+            colorChecker[currentMarker] = pickedColor;
+            ++currentMarker;
+            /*
+            Debug.Log("currentMarker: " + currentMarker);
+            Debug.Log("pickedColor: " + pickedColor);
+            Debug.Log("colorChecker: " + colorChecker.ToCommaSeparatedString());
+            */
+
+            if (currentMarker >= markers.Length) allMarkersColored = true;
+            MarkerColorPick();
+        }
+
+
+    }
+
+    public void BookSpawner()
+    {
+        for (int i = 0; i < markers.Length; i++)
+        {
+
+            markerCollider = markers[i].GetComponent<Collider>();
+            GameObject instance = Instantiate(bookPrefab, markerCollider.bounds.center, Quaternion.identity);
+            instance.GetComponent<Renderer>().material.color = colors[colorChecker[i]];
+            float xScale = Random.Range(1, 3);
+            float yScale = Random.Range(1, 3);
+            float sizeScale = 1.2f;
+            instance.GetComponent<Transform>().localScale = new Vector3 (xScale * sizeScale, yScale * sizeScale, 1);
 
         }
     }
-
 }

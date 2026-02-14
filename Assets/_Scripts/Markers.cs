@@ -1,4 +1,5 @@
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Markers : MonoBehaviour
@@ -20,13 +21,15 @@ public class Markers : MonoBehaviour
     public int pickedColor;
     public int currentMarker = 0;
     public Collider markerCollider;
+    private Spawner sScript;
     private bool allMarkersColored = false;
     public int spawnCount;
 
     void Start()
     {
-        //Debug.Log("Start_Shift: " + bookShift);
+        sScript = GameObject.Find("GameManager").GetComponent<Spawner>();
         MarkerColorPick();
+        
 
     }
 
@@ -52,7 +55,11 @@ public class Markers : MonoBehaviour
             markers[currentMarker].GetComponent<Renderer>().material.color = colors[pickedColor];
             colorChecker[currentMarker] = pickedColor;
             ++currentMarker;
-            if (currentMarker >= markers.Length) allMarkersColored = true;
+            if (currentMarker >= markers.Length) 
+            {
+                allMarkersColored = true;
+                sScript.SpawnFirstBooks();
+            }
             MarkerColorPick();
         }
 

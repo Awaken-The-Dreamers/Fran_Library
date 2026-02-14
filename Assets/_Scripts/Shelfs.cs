@@ -1,25 +1,27 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shelfs : MonoBehaviour
 {
+    //[SerializeField] public GameObject[] shelfs = new GameObject[9];
+    [SerializeField]
     public GameObject[] shelfs = new GameObject[9];
     private Spawner spawnerScript;
-    private Bounds bounds;
-    public Vector3 max;
-    public Vector3 min;
-    public Collider shelfCollider;
+    //private Bounds bounds;
+    //public Vector3 max;
+    //public Vector3 min;
+
+
 
     void Start()
     {
-        // Example bounds setup if not assigned
         spawnerScript = GameObject.Find("GameManager").GetComponent<Spawner>();
-        shelfCollider = shelfs[spawnerScript.spawnPoint].GetComponent<Collider>();
-        bounds = shelfCollider.bounds;
+        /*
+        Debug.Log("spawnPoint = " + spawnerScript.spawnPoint);
+        bounds = shelfColliders[0].bounds;
         max = bounds.max;
         min = bounds.min;
         Debug.Log("bounds = " + bounds);
-
+        */
 
     }
 }

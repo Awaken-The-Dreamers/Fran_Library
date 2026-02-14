@@ -34,61 +34,42 @@ public class Spawner : MonoBehaviour
     public void SpawnFirstBooks()
     {
 
-        /*spawns book at the start of the shelf collider
-         * Changes it color and pos
-         * 
-        */
-
-        for (spawnPoint = 0; spawnPoint < markersCount; spawnPoint++) 
+        for (int i = 0; i < markersCount; i++) //markersCount = 9;
         {
             //counting current books in list
             booksCount = booksList.Count;
-            //Instantiate book prefab
-            bookInstance = Instantiate(bookPrefab, shelfs[spawnPoint].transform.position, Quaternion.identity);
+            //Instantiate book prefab + make Var of it
+            bookInstance = Instantiate(bookPrefab, shelfs[i].transform.position, Quaternion.identity);
             //add this instance to the List to access it later
             booksList.Add(bookInstance);
             //Get bookChangerScript of the current Instance
             bookScript = bookInstance.GetComponent<BookChanger>();
             //intiate scale change
             bookScript.BookChange();
-            
-            //get scales of shelfs and current book instance
-            Vector3 shelfScale = shelfs[spawnPoint].GetComponent<Transform>().localScale;
-            Vector3 bookScale = booksList[booksCount].GetComponent<Transform>().localScale;
-
-            //get X and Y pos change of the book accordingly to the shelf 
-            float bookPosX = ((-shelfScale.x * 0.5f) + (bookScale.x * 0.5f));
-            float bookPosY = ((-shelfScale.y * 0.5f) + (bookScale.y * 0.5f));
-            Vector3 bookPosXYZ = new Vector3(bookPosX, bookPosY, 0);
-
-            //pos + color change
-            bookInstance.GetComponent<Renderer>().material.color = colors[checker[spawnPoint]];
-            booksList[booksCount].transform.Translate(bookPosXYZ, shelfs[spawnPoint].transform);
-            for (int Repeat = 0; Repeat < 2; Repeat++)
-            {
-
-            }
+            //Color + Pos change
+            ColorChange();
+            PositionChange();
         }
 
     }
 
-    public void RepeatBookSpawn()
+    public void ColorChange()
     {
+        booksList[booksCount].GetComponent<Renderer>().material.color = colors[checker[spawnPoint]]; //spawnPoint pick color
+    }
 
-        if (firstSpawn && booksCount < markersCount)
-        {
+    public void PositionChange()
+    {
+        //get scales of shelfs and current book instance
+        Vector3 shelfScale = shelfs[spawnPoint].GetComponent<Transform>().localScale;
+        Vector3 bookScale = booksList[booksCount].GetComponent<Transform>().localScale;
 
-        }
-        if (firstSpawn && booksCount >= markersCount) firstSpawn = false;
-        if (!firstSpawn && booksCount >= markersCount)
-        {
-            //booksList[booksCount].transform.Translate(bookPosXYZ, shelfs[spawnPoint].transform);
-        }
-        /*
-         * If its possible, might be better to spawn next books relative to 1st book spawn
-         * booksList[spawnPoint-(9 * spawnRepeat)].transform
-         * we get pos of 1st book, 2nd book and etc
-         */
+        //get X and Y pos change of the book accordingly to the shelf 
+        float bookPosX = ((-shelfScale.x * 0.5f) + (bookScale.x * 0.5f));
+        float bookPosY = ((-shelfScale.y * 0.5f) + (bookScale.y * 0.5f));
+        Vector3 bookPosXYZ = new Vector3(bookPosX, bookPosY, 0);
+        //pos change
+        booksList[booksCount].transform.Translate(bookPosXYZ, shelfs[spawnPoint].transform);
     }
 
 }

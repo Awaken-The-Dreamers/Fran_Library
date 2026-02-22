@@ -58,7 +58,7 @@ public class Spawner : MonoBehaviour
     }
     public void ColorChange()
     {
-        booksList[booksCount].GetComponent<Renderer>().material.color = colors[checker[spawnPoint]]; //spawnPoint pick color
+        booksList[booksCount].GetComponent<Renderer>().material.color = colors[checker[spawnPoint]];
     }
     public void FirstBooksSpawn()
     {
@@ -117,21 +117,18 @@ public class Spawner : MonoBehaviour
         bookScript.BookChange();
         //Color + Pos change
         
-        
-        //Vector3 firstBookScale = booksList[0].GetComponent<Transform>().localScale;
         float newBookPosY = (-GetPriorBookScale().y*0.5f) + (GetCurrentBookScale().y *0.5f);
         float newBookPosX = (GetPriorBookScale().x *0.5f) + (GetCurrentBookScale().x * 0.5f) + 0.05f;
 
         Vector3 newBookPosXYZ = new Vector3(newBookPosX, newBookPosY, 0);
         //pos change
-        booksList[booksCount].transform.Translate(newBookPosXYZ, booksList[booksCount - shelfsCount].transform); //TRY booksList[booksCount - 3].transform
+        booksList[booksCount].transform.Translate(newBookPosXYZ, booksList[booksCount - shelfsCount].transform);
         if (spawnPoint < shelfsCount-1) spawnPoint++;
         booksCount = booksList.Count;
         SpawnCycleComplete();
     }
     public void SpawnCycleComplete()
     {
-        //Debug.Log("SpawnCycleComplete" + "\n" +"spawnCycle = " + spawnCycle + " | booksCount: " + booksCount + " | markersCount: " + markersCount + " | spawnPoint: " + spawnPoint + "\n" + "bC/mC/sC = " +((booksCount + 1) / markersCount / spawnCycle));
         //complete when 1 book have appeared on each of 9 shelfs
         Debug.Log("SpawnCycleComplete| spawnCycle: " + spawnCycle + " | booksCount = " + booksCount + " | shelfsCount: " + shelfsCount + " | spawnPoint: " + spawnPoint);
         if (booksCount / shelfsCount / spawnCycle == 1)
@@ -145,20 +142,12 @@ public class Spawner : MonoBehaviour
     }
     public void SpawnCycleEnd()
     {
-        //Debug.Log("SpawnCycleEnd| spawnCycle: " + spawnCycle);
-        spawnCycle++;
-        //Debug.Log("SpawnCycleEnd| ++spawnCycle: " + spawnCycle);
         //when all books appeared - count as complete spawnCycle
-        Debug.Log("SpawnCycleEnd| spawnCycle: " + spawnCycle + " |spawnRepeat: " + spawnRepeat + " |spawnPoint: " + spawnPoint);
-        if (spawnCycle <= spawnRepeat) //&& booksCount / shelfsCount / spawnCycle == 1
+        spawnCycle++;
+        
+        if (spawnCycle <= spawnRepeat) 
         {
-            //Debug.Log("SpawnCycle REPEAT"); Debug.Log("REPEAT| spawnPoint: " + spawnPoint); Debug.Log("SpawnCycleCheck spawnCycle " + spawnCycle);
-            Debug.Log("SpawnAGAIN");
             SpawnBooks();
-        }
-        if (spawnCycle > spawnRepeat)
-        {
-            Debug.Log("StopSpawn| spawnCycle: " + spawnCycle + " | booksCount = " + booksCount + " | shelfsCount: " + shelfsCount + " | spawnPoint: " + spawnPoint);
         }
     }
 

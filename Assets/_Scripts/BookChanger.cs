@@ -2,12 +2,6 @@ using UnityEngine;
 
 public class BookChanger : MonoBehaviour
 {
-    private Markers markersScript;
-    private Shelfs shelfsScript;
-    private Spawner spawnerScript;
-    private Color[] mColors;
-    private int[] mColorChecker;
-    private int mSpawnCount;
     public Vector3 bookScale;
 
 

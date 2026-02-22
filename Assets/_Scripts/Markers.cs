@@ -58,7 +58,7 @@ public class Markers : MonoBehaviour
             if (currentMarker >= markers.Length) 
             {
                 allMarkersColored = true;
-                sScript.SpawnFirstBooks();
+                sScript.SpawnBooks();
             }
             MarkerColorPick();
         }

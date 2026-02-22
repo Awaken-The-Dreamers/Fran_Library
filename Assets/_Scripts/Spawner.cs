@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -10,15 +10,21 @@ public class Spawner : MonoBehaviour
     private Shelfs shelfsScript;
     private BookChanger bookScript;
     public GameObject bookPrefab;
-    public int spawnPoint;
+    private int spawnPoint;
     [SerializeField] public List<GameObject> booksList = new List<GameObject>();
-    private bool firstSpawn = true;
-    private int markersCount;
     private int booksCount;
+    private int shelfsCount;
     private GameObject gm;
     private Color[] colors;
     private int[] checker;
     private GameObject[] shelfs;
+    private Vector3 shelfScale;
+    private float shelfSpawnStart_X;
+    private float shelfSpawnStart_Y;
+    private float firstBookPosX;
+    private float firstBookPosY;
+    private int spawnRepeat = 5; //books to spawn on each shelf
+    private int spawnCycle = 1;
 
     private void Start()
     {
@@ -28,48 +34,136 @@ public class Spawner : MonoBehaviour
         checker = markersScript.colorChecker;
         shelfsScript = gm.GetComponent<Shelfs>();
         shelfs = shelfsScript.shelfs;
-        markersCount = markersScript.markers.Length;
-        
+        shelfsCount = shelfs.Length;
+        shelfScale = shelfs[spawnPoint].GetComponent<Transform>().localScale;
+        shelfSpawnStart_X = -shelfScale.x * 0.5f;
+        shelfSpawnStart_Y = -shelfScale.y * 0.5f;
     }
-    public void SpawnFirstBooks()
+    public void SpawnBooks()
     {
-
-        for (int i = 0; i < markersCount; i++) //markersCount = 9;
+        
+        for (int i = 0; i < shelfsCount; i++) //shelfs = 9;
         {
-            //counting current books in list
-            booksCount = booksList.Count;
-            //Instantiate book prefab + make Var of it
-            bookInstance = Instantiate(bookPrefab, shelfs[i].transform.position, Quaternion.identity);
-            //add this instance to the List to access it later
-            booksList.Add(bookInstance);
-            //Get bookChangerScript of the current Instance
-            bookScript = bookInstance.GetComponent<BookChanger>();
-            //intiate scale change
-            bookScript.BookChange();
-            //Color + Pos change
-            ColorChange();
-            PositionChange();
+            if (spawnCycle == 1)
+            {
+                FirstBooksSpawn();
+            }
+            if (spawnCycle > 1 && spawnCycle <= spawnRepeat)
+            {
+                NextBooksSpawn();
+            }
+
         }
 
     }
-
     public void ColorChange()
     {
         booksList[booksCount].GetComponent<Renderer>().material.color = colors[checker[spawnPoint]]; //spawnPoint pick color
     }
-
-    public void PositionChange()
+    public void FirstBooksSpawn()
     {
-        //get scales of shelfs and current book instance
-        Vector3 shelfScale = shelfs[spawnPoint].GetComponent<Transform>().localScale;
-        Vector3 bookScale = booksList[booksCount].GetComponent<Transform>().localScale;
-
+        
+        //Instantiate book prefab + make Var of it
+        bookInstance = Instantiate(bookPrefab, shelfs[spawnPoint].transform.position, Quaternion.identity);
+        //add this instance to the List to access it later
+        booksList.Add(bookInstance);
+        //Get bookChangerScript of the current Instance
+        bookScript = bookInstance.GetComponent<BookChanger>();
+        //intiate scale change
+        ColorChange();
+        bookScript.BookChange();
+        //Color + Pos change
+        
+        
+        Vector3 firstBookScale = booksList[booksCount].GetComponent<Transform>().localScale;
+        firstBookPosX = shelfSpawnStart_X + (firstBookScale.x * 0.5f);
+        firstBookPosY = shelfSpawnStart_Y + (firstBookScale.y * 0.5f);
         //get X and Y pos change of the book accordingly to the shelf 
-        float bookPosX = ((-shelfScale.x * 0.5f) + (bookScale.x * 0.5f));
-        float bookPosY = ((-shelfScale.y * 0.5f) + (bookScale.y * 0.5f));
-        Vector3 bookPosXYZ = new Vector3(bookPosX, bookPosY, 0);
+        Vector3 firstBookPosXYZ = new Vector3(firstBookPosX, firstBookPosY, 0);
         //pos change
-        booksList[booksCount].transform.Translate(bookPosXYZ, shelfs[spawnPoint].transform);
+        booksList[booksCount].transform.Translate(firstBookPosXYZ, shelfs[spawnPoint].transform);
+        if (spawnPoint < shelfsCount) spawnPoint++;
+        booksCount = booksList.Count;
+        SpawnCycleComplete();
+
     }
+
+    public void NextBooksSpawn()
+    {
+        Vector3 GetCurrentBookScale()
+        {
+            Vector3 currentBookScale = booksList[booksCount].GetComponent<Transform>().localScale;
+            return currentBookScale;
+        }
+
+        Vector3 GetPriorBookScale()
+        {
+            Vector3 priorBookScale = booksList[booksCount - shelfsCount].GetComponent<Transform>().localScale;
+            return priorBookScale;
+        }
+        //Instantiate book prefab + make Var of it
+        if (spawnCycle > 2)
+        {
+            Debug.Log("spawnCycle>2: " + spawnCycle + " | booksCount = " + booksCount + " | shelfsCount: " + shelfsCount + " | spawnPoint: " + spawnPoint);    
+        }
+        
+        bookInstance = Instantiate(bookPrefab, booksList[booksCount - shelfsCount].transform.position, Quaternion.identity);
+        //add this instance to the List to access it later
+        booksList.Add(bookInstance);
+        //Get bookChangerScript of the current Instance
+        bookScript = bookInstance.GetComponent<BookChanger>();
+        //intiate scale change
+        ColorChange();
+        bookScript.BookChange();
+        //Color + Pos change
+        
+        
+        //Vector3 firstBookScale = booksList[0].GetComponent<Transform>().localScale;
+        float newBookPosY = (-GetPriorBookScale().y*0.5f) + (GetCurrentBookScale().y *0.5f);
+        float newBookPosX = (GetPriorBookScale().x *0.5f) + (GetCurrentBookScale().x * 0.5f) + 0.05f;
+
+        Vector3 newBookPosXYZ = new Vector3(newBookPosX, newBookPosY, 0);
+        //pos change
+        booksList[booksCount].transform.Translate(newBookPosXYZ, booksList[booksCount - shelfsCount].transform); //TRY booksList[booksCount - 3].transform
+        if (spawnPoint < shelfsCount-1) spawnPoint++;
+        booksCount = booksList.Count;
+        SpawnCycleComplete();
+    }
+    public void SpawnCycleComplete()
+    {
+        //Debug.Log("SpawnCycleComplete" + "\n" +"spawnCycle = " + spawnCycle + " | booksCount: " + booksCount + " | markersCount: " + markersCount + " | spawnPoint: " + spawnPoint + "\n" + "bC/mC/sC = " +((booksCount + 1) / markersCount / spawnCycle));
+        //complete when 1 book have appeared on each of 9 shelfs
+        Debug.Log("SpawnCycleComplete| spawnCycle: " + spawnCycle + " | booksCount = " + booksCount + " | shelfsCount: " + shelfsCount + " | spawnPoint: " + spawnPoint);
+        if (booksCount / shelfsCount / spawnCycle == 1)
+        {
+
+            Debug.Log("SpawnCycleREPEAT| booksCount = " + booksCount + " | shelfsCount: " + shelfsCount + " | spawnPoint: " + spawnPoint + " | spawnCycle: " + spawnCycle);
+            
+            spawnPoint = 0;
+            SpawnCycleEnd();
+        }
+    }
+    public void SpawnCycleEnd()
+    {
+        //Debug.Log("SpawnCycleEnd| spawnCycle: " + spawnCycle);
+        spawnCycle++;
+        //Debug.Log("SpawnCycleEnd| ++spawnCycle: " + spawnCycle);
+        //when all books appeared - count as complete spawnCycle
+        Debug.Log("SpawnCycleEnd| spawnCycle: " + spawnCycle + " |spawnRepeat: " + spawnRepeat + " |spawnPoint: " + spawnPoint);
+        if (spawnCycle <= spawnRepeat) //&& booksCount / shelfsCount / spawnCycle == 1
+        {
+            //Debug.Log("SpawnCycle REPEAT"); Debug.Log("REPEAT| spawnPoint: " + spawnPoint); Debug.Log("SpawnCycleCheck spawnCycle " + spawnCycle);
+            Debug.Log("SpawnAGAIN");
+            SpawnBooks();
+        }
+        if (spawnCycle > spawnRepeat)
+        {
+            Debug.Log("StopSpawn| spawnCycle: " + spawnCycle + " | booksCount = " + booksCount + " | shelfsCount: " + shelfsCount + " | spawnPoint: " + spawnPoint);
+        }
+    }
+
+
+
+
 
 }

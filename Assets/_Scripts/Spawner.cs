@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     public int repeatSpawn;
     private GameObject bookInstance;
     private Markers markersScript;
-    private Shelfs shelfsScript;
+    private Shelfs sScript;
     private BookChanger bookScript;
     public GameObject bookPrefab;
     private int spawnPoint;
@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     private float shelfSpawnStart_Y;
     private float firstBookPosX;
     private float firstBookPosY;
-    private int spawnRepeat = 5; //books to spawn on each shelf
+    public int spawnRepeat = 5; //books to spawn on each shelf
     private int spawnCycle = 1;
 
     private void Start()
@@ -32,8 +32,8 @@ public class Spawner : MonoBehaviour
         markersScript = gm.GetComponent<Markers>();
         colors = markersScript.colors;
         checker = markersScript.colorChecker;
-        shelfsScript = gm.GetComponent<Shelfs>();
-        shelfs = shelfsScript.shelfs;
+        sScript = gm.GetComponent<Shelfs>();
+        shelfs = sScript.shelfs;
         shelfsCount = shelfs.Length;
         shelfScale = shelfs[spawnPoint].GetComponent<Transform>().localScale;
         shelfSpawnStart_X = -shelfScale.x * 0.5f;
@@ -101,12 +101,7 @@ public class Spawner : MonoBehaviour
             Vector3 priorBookScale = booksList[booksCount - shelfsCount].GetComponent<Transform>().localScale;
             return priorBookScale;
         }
-        //Instantiate book prefab + make Var of it
-        if (spawnCycle > 2)
-        {
-            Debug.Log("spawnCycle>2: " + spawnCycle + " | booksCount = " + booksCount + " | shelfsCount: " + shelfsCount + " | spawnPoint: " + spawnPoint);    
-        }
-        
+        //Instantiate book prefab
         bookInstance = Instantiate(bookPrefab, booksList[booksCount - shelfsCount].transform.position, Quaternion.identity);
         //add this instance to the List to access it later
         booksList.Add(bookInstance);
@@ -130,12 +125,8 @@ public class Spawner : MonoBehaviour
     public void SpawnCycleComplete()
     {
         //complete when 1 book have appeared on each of 9 shelfs
-        Debug.Log("SpawnCycleComplete| spawnCycle: " + spawnCycle + " | booksCount = " + booksCount + " | shelfsCount: " + shelfsCount + " | spawnPoint: " + spawnPoint);
         if (booksCount / shelfsCount / spawnCycle == 1)
         {
-
-            Debug.Log("SpawnCycleREPEAT| booksCount = " + booksCount + " | shelfsCount: " + shelfsCount + " | spawnPoint: " + spawnPoint + " | spawnCycle: " + spawnCycle);
-            
             spawnPoint = 0;
             SpawnCycleEnd();
         }
@@ -144,11 +135,16 @@ public class Spawner : MonoBehaviour
     {
         //when all books appeared - count as complete spawnCycle
         spawnCycle++;
-        
-        if (spawnCycle <= spawnRepeat) 
+        if (spawnCycle <= spawnRepeat) Invoke("SpawnBooks", 0);
+        //start of the Book Size counter
+        if (spawnCycle > spawnRepeat)
         {
-            SpawnBooks();
+            Debug.Log($"{spawnCycle} > {spawnRepeat}");
+            sScript.BookCounter(spawnRepeat, 0); //0 = start int for loop
+
         }
+
+        
     }
 
 

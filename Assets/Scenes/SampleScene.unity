@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   repeatSpawn: 0
   bookPrefab: {fileID: 1150151670483246937, guid: e0319fa31cce42e42805a6a0834d07d6, type: 3}
-  spawnPoint: 0
+  booksList: []
 --- !u!114 &196539679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +255,8 @@ Transform:
   m_GameObject: {fileID: 311244618}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.5, z: -0.96000004}
-  m_LocalScale: {x: 3.6333, y: 2.6220925, z: 1}
+  m_LocalPosition: {x: 0.2, y: 7.5, z: -0.96000004}
+  m_LocalScale: {x: 4, y: 2.6220925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709246209}
@@ -329,6 +329,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &311244622
 MeshFilter:
@@ -425,7 +426,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -35}
+  m_LocalPosition: {x: -2.1659436, y: 1.0148089, z: -11.507788}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -503,8 +504,8 @@ Transform:
   m_GameObject: {fileID: 360262445}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 1.49, z: -0.96000004}
-  m_LocalScale: {x: 3.6333, y: 2.6220925, z: 1}
+  m_LocalPosition: {x: 4.55, y: 1.49, z: -0.96000004}
+  m_LocalScale: {x: 4, y: 2.6220925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709246209}
@@ -577,6 +578,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &360262449
 MeshFilter:
@@ -612,14 +614,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -742,8 +744,8 @@ Transform:
   m_GameObject: {fileID: 442810898}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0236, y: 0, z: -0.6458}
-  m_LocalScale: {x: 12.210315, y: 0.29251, z: 2.2916}
+  m_LocalPosition: {x: 0.183, y: 0, z: -0.6458}
+  m_LocalScale: {x: 13.097769, y: 0.29251, z: 2.2916}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1996264454}
@@ -816,6 +818,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &442810902
 MeshFilter:
@@ -881,8 +884,8 @@ Transform:
   m_GameObject: {fileID: 476117170}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 6, y: 3, z: 0}
-  m_LocalScale: {x: 12, y: 0.3, z: 1}
+  m_LocalPosition: {x: 6.72, y: 3.752, z: 0}
+  m_LocalScale: {x: 13.503601, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 838149757}
@@ -955,6 +958,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &476117174
 MeshFilter:
@@ -1019,7 +1023,7 @@ Transform:
   m_GameObject: {fileID: 595432784}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: 4, y: 3, z: -1.71}
+  m_LocalPosition: {x: 4.55, y: 3, z: -1.71}
   m_LocalScale: {x: 0.42472357, y: 0.42472357, z: 0.42472357}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1095,6 +1099,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &595432788
 MeshFilter:
@@ -1132,8 +1137,8 @@ Transform:
   m_GameObject: {fileID: 626750868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.51, z: -0.96000004}
-  m_LocalScale: {x: 3.6333, y: 2.6220925, z: 1}
+  m_LocalPosition: {x: 0.2, y: 4.51, z: -0.96000004}
+  m_LocalScale: {x: 4, y: 2.6220925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709246209}
@@ -1206,6 +1211,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &626750872
 MeshFilter:
@@ -1284,8 +1290,8 @@ Transform:
   m_GameObject: {fileID: 717347167}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0236, y: 3, z: -0.6458}
-  m_LocalScale: {x: 12.210315, y: 0.29251, z: 2.2916}
+  m_LocalPosition: {x: 0.183, y: 3, z: -0.6458}
+  m_LocalScale: {x: 13.097769, y: 0.29251, z: 2.2916}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1996264454}
@@ -1358,6 +1364,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &717347171
 MeshFilter:
@@ -1498,6 +1505,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &730562970
 MeshFilter:
@@ -1695,6 +1703,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &842632553
 MeshFilter:
@@ -1732,8 +1741,8 @@ Transform:
   m_GameObject: {fileID: 1117840484}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 7.5, z: -0.96}
-  m_LocalScale: {x: 3.6333, y: 2.6220925, z: 1}
+  m_LocalPosition: {x: -4.2, y: 7.5, z: -0.96}
+  m_LocalScale: {x: 4, y: 2.6220925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709246209}
@@ -1806,6 +1815,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1117840488
 MeshFilter:
@@ -1919,6 +1929,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1162427785
 MeshFilter:
@@ -1957,8 +1968,8 @@ Transform:
   m_GameObject: {fileID: 1274003640}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 2, y: 3, z: 0}
-  m_LocalScale: {x: 12, y: 0.3, z: 1}
+  m_LocalPosition: {x: 2.37, y: 3.752, z: 0}
+  m_LocalScale: {x: 13.503601, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 838149757}
@@ -2031,6 +2042,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1274003644
 MeshFilter:
@@ -2135,8 +2147,8 @@ Transform:
   m_GameObject: {fileID: 1494475232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.49, z: -0.96000004}
-  m_LocalScale: {x: 3.6333, y: 2.6220925, z: 1}
+  m_LocalPosition: {x: 0.2, y: 1.49, z: -0.96000004}
+  m_LocalScale: {x: 4, y: 2.6220925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709246209}
@@ -2209,6 +2221,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1494475236
 MeshFilter:
@@ -2246,8 +2259,8 @@ Transform:
   m_GameObject: {fileID: 1664965711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 7.5, z: -0.96000004}
-  m_LocalScale: {x: 3.6333, y: 2.6220925, z: 1}
+  m_LocalPosition: {x: 4.55, y: 7.5, z: -0.96000004}
+  m_LocalScale: {x: 4, y: 2.6220925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709246209}
@@ -2320,6 +2333,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1664965715
 MeshFilter:
@@ -2417,6 +2431,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1706616180
 MeshFilter:
@@ -2435,8 +2450,8 @@ Transform:
   m_GameObject: {fileID: 1706616177}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.0494, z: 0}
-  m_LocalScale: {x: 1.21748, y: 1, z: 1.1996349}
+  m_LocalPosition: {x: 0.1983, y: 1.0714, z: -0}
+  m_LocalScale: {x: 1.3029792, y: 1.0354, z: 1.2663231}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2545,6 +2560,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1723777808
 MeshFilter:
@@ -2582,8 +2598,8 @@ Transform:
   m_GameObject: {fileID: 1732773352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 4.51, z: -0.96000004}
-  m_LocalScale: {x: 3.6333, y: 2.6220925, z: 1}
+  m_LocalPosition: {x: 4.55, y: 4.51, z: -0.96000004}
+  m_LocalScale: {x: 4, y: 2.6220925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709246209}
@@ -2656,6 +2672,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1732773356
 MeshFilter:
@@ -2693,7 +2710,7 @@ Transform:
   m_GameObject: {fileID: 1791772247}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: 4, y: 0, z: -1.71}
+  m_LocalPosition: {x: 4.55, y: 0, z: -1.71}
   m_LocalScale: {x: 0.42472357, y: 0.42472357, z: 0.42472357}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2769,6 +2786,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1791772251
 MeshFilter:
@@ -2882,6 +2900,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1851702104
 MeshFilter:
@@ -2920,8 +2939,8 @@ Transform:
   m_GameObject: {fileID: 1888722164}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -2, y: 3, z: 0}
-  m_LocalScale: {x: 12, y: 0.3, z: 1}
+  m_LocalPosition: {x: -2, y: 3.752, z: 0}
+  m_LocalScale: {x: 13.503601, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 838149757}
@@ -2994,6 +3013,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1888722168
 MeshFilter:
@@ -3059,8 +3079,8 @@ Transform:
   m_GameObject: {fileID: 1913419632}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0236, y: 6, z: -0.6458}
-  m_LocalScale: {x: 12.210315, y: 0.29251, z: 2.2916}
+  m_LocalPosition: {x: 0.183, y: 6, z: -0.6458}
+  m_LocalScale: {x: 13.097769, y: 0.29251, z: 2.2916}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1996264454}
@@ -3133,6 +3153,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1913419636
 MeshFilter:
@@ -3197,8 +3218,8 @@ Transform:
   m_GameObject: {fileID: 1960626169}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 4.51, z: -0.96000004}
-  m_LocalScale: {x: 3.6333, y: 2.6220925, z: 1}
+  m_LocalPosition: {x: -4.2, y: 4.51, z: -0.96000004}
+  m_LocalScale: {x: 4, y: 2.6220925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709246209}
@@ -3271,6 +3292,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1960626173
 MeshFilter:
@@ -3308,8 +3330,8 @@ Transform:
   m_GameObject: {fileID: 1973442650}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 1.49, z: -0.96000004}
-  m_LocalScale: {x: 3.6333, y: 2.6220925, z: 1}
+  m_LocalPosition: {x: -4.2, y: 1.49, z: -0.96000004}
+  m_LocalScale: {x: 4, y: 2.6220925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709246209}
@@ -3382,6 +3404,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1973442654
 MeshFilter:
@@ -3420,8 +3443,8 @@ Transform:
   m_GameObject: {fileID: 1983557047}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -6, y: 3, z: 0}
-  m_LocalScale: {x: 12, y: 0.3, z: 1}
+  m_LocalPosition: {x: -6.39, y: 3.752, z: 0}
+  m_LocalScale: {x: 13.503601, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 838149757}
@@ -3494,6 +3517,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1983557051
 MeshFilter:
@@ -3703,6 +3727,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2097549256
 MeshFilter:
@@ -3740,7 +3765,7 @@ Transform:
   m_GameObject: {fileID: 2107719828}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: 4, y: 6, z: -1.71}
+  m_LocalPosition: {x: 4.55, y: 6, z: -1.71}
   m_LocalScale: {x: 0.42472357, y: 0.42472357, z: 0.42472357}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3816,6 +3841,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2107719832
 MeshFilter:
@@ -3913,6 +3939,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2126997503
 MeshFilter:

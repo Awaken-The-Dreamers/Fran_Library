@@ -7,7 +7,9 @@ public class Shelfs : MonoBehaviour
     [SerializeField]
     public GameObject[] shelfs = new GameObject[9];
     private int shelfsCount;
+    private GameObject gm;
     private Spawner sScript;
+    private BookDropper bdScript;
     private int totalBooksOnSingleShelf;
     private int currentBook = 0;
     public List<float> totalBookScaleOnShelf = new List<float>();
@@ -21,7 +23,9 @@ public class Shelfs : MonoBehaviour
 
     void Start()
     {
-        sScript = GameObject.Find("GameManager").GetComponent<Spawner>();
+        gm = GameObject.Find("GameManager");
+        sScript = gm.GetComponent<Spawner>();
+        bdScript = gm.GetComponent<BookDropper>();
         totalBooksOnSingleShelf = sScript.spawnRepeat;
         shelfsCount = shelfs.Length - 1;
         for (bpStart = 0; bpStart < shelfs.Length; bpStart++)
@@ -99,6 +103,7 @@ public class Shelfs : MonoBehaviour
         for (int i = 0; i < totalBookScaleOnShelf.Count; i++)
         {
             if (totalBookScaleOnShelf[i] > sizeLimit) lastBooks[i].GameObject().SetActive(false);
+            if (i == totalBookScaleOnShelf.Count-1) bdScript.GetDefaultComponents();
         }
     }
 }

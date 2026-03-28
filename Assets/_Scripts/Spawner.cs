@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ public class Spawner : MonoBehaviour
     private BookChanger bookScript;
     public GameObject bookPrefab;
     private int spawnPoint;
-    [SerializeField] public List<GameObject> booksList = new List<GameObject>();
+    public List<GameObject> booksList { get; private set; } = new List<GameObject>();
     private int booksCount;
     private int shelfsCount;
     private GameObject gm;

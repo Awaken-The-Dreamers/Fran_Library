@@ -139,8 +139,7 @@ public class Spawner : MonoBehaviour
         //start of the Book Size counter
         if (spawnCycle > spawnRepeat)
         {
-            Debug.Log($"{spawnCycle} > {spawnRepeat}");
-            sScript.BookCounter(spawnRepeat, 0); //0 = start int for loop
+            sScript.BookCounter(spawnRepeat, 0); //0 = start int for loop for book generator
 
         }
 

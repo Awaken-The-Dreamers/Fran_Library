@@ -24,6 +24,7 @@ public class Spawner : MonoBehaviour
     private float firstBookPosY;
     public int spawnRepeat = 5; //books to spawn on each shelf
     private int spawnCycle = 1;
+    private int bookNumber = -1;
 
     private void Start()
     {
@@ -43,12 +44,15 @@ public class Spawner : MonoBehaviour
         
         for (int i = 0; i < shelfsCount; i++) //shelfs = 9;
         {
+            
             if (spawnCycle == 1)
             {
+                bookNumber += 1;
                 FirstBooksSpawn();
             }
             if (spawnCycle > 1 && spawnCycle <= spawnRepeat)
             {
+                bookNumber += 1;
                 NextBooksSpawn();
             }
 
@@ -64,6 +68,7 @@ public class Spawner : MonoBehaviour
         
         //Instantiate book prefab + make Var of it
         bookInstance = Instantiate(bookPrefab, shelfs[spawnPoint].transform.position, Quaternion.identity);
+        bookInstance.name = $"Book_{bookNumber}";
         //add this instance to the List to access it later
         booksList.Add(bookInstance);
         //Get bookChangerScript of the current Instance
@@ -102,6 +107,7 @@ public class Spawner : MonoBehaviour
         }
         //Instantiate book prefab
         bookInstance = Instantiate(bookPrefab, booksList[booksCount - shelfsCount].transform.position, Quaternion.identity);
+        bookInstance.name = $"Book_{bookNumber}";
         //add this instance to the List to access it later
         booksList.Add(bookInstance);
         //Get bookChangerScript of the current Instance
@@ -138,7 +144,7 @@ public class Spawner : MonoBehaviour
         //start of the Book Size counter
         if (spawnCycle > spawnRepeat)
         {
-            sScript.BookCounter(spawnRepeat, 0); //0 = start int for loop for book generator
+            sScript.BookCounter(spawnRepeat, 0); //0 = start int for book generator loop
 
         }
 

@@ -4,11 +4,11 @@
 - Active scene:
   - Name: SampleScene
   - Tags:
-    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController
+    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, FetchCollider, Book, Shelf, BookHeld
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI
 - Active game object:
-  - Name: Manipulator
-  - Tag: Untagged
+  - Name: FetchCollider
+  - Tag: FetchCollider
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

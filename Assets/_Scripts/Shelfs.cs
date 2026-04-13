@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shelfs : MonoBehaviour
@@ -6,7 +7,9 @@ public class Shelfs : MonoBehaviour
     [SerializeField]
     public GameObject[] shelfs = new GameObject[9];
     private int shelfsCount;
+    private GameObject gm;
     private Spawner sScript;
+    private BookDropper bdScript;
     private int totalBooksOnSingleShelf;
     private int currentBook = 0;
     public List<float> totalBookScaleOnShelf = new List<float>();
@@ -14,11 +17,15 @@ public class Shelfs : MonoBehaviour
     private int bpStart; //BookPickerStart - start of the size picker
     private float totalBookScale; //total books count on shef
     private int loopCounter = 0; //start point of the ScalePickup loop
+    //[SerializeField]
+    public List<GameObject> lastBooks;
 
 
     void Start()
     {
-        sScript = GameObject.Find("GameManager").GetComponent<Spawner>();
+        gm = GameObject.Find("GameManager");
+        sScript = gm.GetComponent<Spawner>();
+        bdScript = gm.GetComponent<BookDropper>();
         totalBooksOnSingleShelf = sScript.spawnRepeat;
         shelfsCount = shelfs.Length - 1;
         for (bpStart = 0; bpStart < shelfs.Length; bpStart++)
@@ -38,6 +45,7 @@ public class Shelfs : MonoBehaviour
         for (loopCounter = loopCounter + currentShelf; loopCounter < totalBooksOnSingleShelf + currentShelf; loopCounter++)
         {
             sScript = GameObject.Find("GameManager").GetComponent<Spawner>();
+
             if (currentBook < sScript.booksList.Count)
             {
                 float currentBookScale = sScript.booksList[currentBook].GetComponent<Transform>().localScale.x;
@@ -58,6 +66,8 @@ public class Shelfs : MonoBehaviour
          * When all sizes are recorded to the list {totalBookScaleOnShelf}
          * Checker Increases current shelf, currentBook values by 1; resets totalBookScale & loopCounter; 
          */
+        
+        if (totalBookScaleOnShelf.Count == 9) BookRemover();
         if (currentShelf < shelfsCount)
         {
             totalBookScale = 0;
@@ -66,9 +76,34 @@ public class Shelfs : MonoBehaviour
             totalBooksOnSingleShelf = sScript.spawnRepeat;
             if (loopCounter < shelfsCount) ++currentShelf; 
             //restart measure cycle
+
             BookCounter(totalBooksOnSingleShelf, loopCounter);
+            
         }
+    }
 
-
+    void BookRemover()
+    {
+        //creating an array of last books which might be deleted if shelf size > 4
+        lastBooks = new List<GameObject>
+        {
+            sScript.booksList[36],
+            sScript.booksList[37],
+            sScript.booksList[38],
+            sScript.booksList[39],
+            sScript.booksList[40],
+            sScript.booksList[41],
+            sScript.booksList[42],
+            sScript.booksList[43],
+            sScript.booksList[44]
+            
+        };
+        float sizeLimit = 3.75f;
+        //loop wiil disable last book that exceed sizeLimit
+        for (int i = 0; i < totalBookScaleOnShelf.Count; i++)
+        {
+            if (totalBookScaleOnShelf[i] > sizeLimit) lastBooks[i].GameObject().SetActive(false);
+            if (i == totalBookScaleOnShelf.Count-1) bdScript.GetDefaultComponents();
+        }
     }
 }

@@ -21,5 +21,7 @@ public class Manipulator : MonoBehaviour
 
         // 3. Set the GameObject's position to the new world position
         transform.position = worldPoint;
+
+        
     }
 }

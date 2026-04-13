@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Manipulator : MonoBehaviour
 {
     // A variable to define the distance from the camera for the object in 3D space
-    private float distanceFromCamera = 10f; 
+    private float distanceFromCamera = 5f; 
 
     void Update()
     {
@@ -17,7 +17,7 @@ public class Manipulator : MonoBehaviour
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
 
         // For 2D, you might want to force the Z position to 0 to stay on the 2D plane
-        worldPoint.z = 0; // Uncomment this line for a purely 2D game
+        //worldPoint.z = 0; // Uncomment this line for a purely 2D game
 
         // 3. Set the GameObject's position to the new world position
         transform.position = worldPoint;
